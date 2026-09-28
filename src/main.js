@@ -3,6 +3,7 @@ import { chromium } from "playwright";
 export default async ({ req, res, log, error }) => {
 let browser;
 
+```
 try {
     log("Starting Chromium...");
 
@@ -61,7 +62,6 @@ try {
     });
 
 } catch (err) {
-
     if (browser) {
         await browser.close();
     }
@@ -73,6 +73,6 @@ try {
         error: err.message
     }, 500);
 }
-
+```
 
 };
