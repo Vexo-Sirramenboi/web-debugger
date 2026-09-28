@@ -1,14 +1,32 @@
 import { chromium } from "playwright";
+import { createRequire } from "module";
+import path from "path";
+
+const require = createRequire(import.meta.url);
+
+const playwrightCorePath = path.dirname(
+require.resolve("playwright-core/package.json")
+);
+
+const browserPath = path.join(
+playwrightCorePath,
+".local-browsers",
+"chromium-1243",
+"chrome-linux64",
+"chrome"
+);
 
 export default async ({ req, res, log, error }) => {
 let browser;
 
 ```
 try {
+    log(`Chromium executable: ${browserPath}`);
     log("Starting Chromium...");
 
     browser = await chromium.launch({
-        headless: true
+        headless: true,
+        executablePath: browserPath
     });
 
     log("Chromium launched!");
