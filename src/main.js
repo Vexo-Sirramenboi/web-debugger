@@ -21,7 +21,8 @@ let browser;
 
 ```
 try {
-    log(`Chromium executable: ${browserPath}`);
+    log("Chromium executable path:");
+    log(browserPath);
     log("Starting Chromium...");
 
     browser = await chromium.launch({
@@ -59,7 +60,8 @@ try {
 
     const url = req.query?.url || "https://example.com";
 
-    log(`Opening ${url}`);
+    log("Opening URL:");
+    log(url);
 
     await page.goto(url, {
         waitUntil: "domcontentloaded",
