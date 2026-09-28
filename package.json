@@ -2,6 +2,9 @@
 "name": "web-debugger",
 "version": "1.0.0",
 "type": "module",
+"scripts": {
+"postinstall": "playwright install chromium"
+},
 "dependencies": {
 "playwright": "^1.55.0"
 }
