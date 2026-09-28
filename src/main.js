@@ -19,20 +19,20 @@ try {
     const errors = [];
     const failedRequests = [];
 
-    page.on("console", message => {
+    page.on("console", (message) => {
         logs.push({
             type: message.type(),
             text: message.text()
         });
     });
 
-    page.on("pageerror", exception => {
+    page.on("pageerror", (exception) => {
         errors.push({
             message: exception.message
         });
     });
 
-    page.on("requestfailed", request => {
+    page.on("requestfailed", (request) => {
         failedRequests.push({
             url: request.url(),
             error: request.failure()?.errorText || "Unknown error"
